@@ -1,0 +1,228 @@
+body{
+  background-image: url(/img/background.jpg);
+  background-repeat: repeat;
+}
+.container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.site-header{
+  text-align: center;
+  padding-top: 65px;
+  background: #fafafa;
+  border-radius: 10px 10px 10px 10px;
+}
+.logo{display: inline-block;}
+.logo h1{
+  font-size: 50px;
+  line-height: 52px;
+  color: #716a72;
+  text-transform: uppercase;
+  border-bottom: 3px double #eaeaea;
+	padding-bottom: 30px;
+  font-family: 'source_sans_problack';
+  letter-spacing: 7px;
+}
+.menu{
+  padding-top: 40px;
+  padding-bottom: 45px;
+  text-align: center;
+}
+
+.about_project{
+  padding-top: 20px;
+  font-family: cursive;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.menu ul {
+  display: inline-block;
+            margin: 0;
+            padding: 0;
+            /* For IE, the outcast */
+            zoom:1;
+            *display: inline;
+}
+.menu ul li{
+  float: left;
+           padding: 2px 5px;
+}
+
+.menu ul a{
+  text-decoration:none;
+  width:129px;
+  float:left;
+  color:#716a72;
+  font-weight:bold;
+  text-align:center;
+  line-height:35px;
+}
+
+.title-text{display: inline-block;}
+.title-text h1{
+  font-size: 30px;
+  line-height: 52px;
+  color: #716a72;
+  text-transform: uppercase;
+  border-bottom: 3px double #eaeaea;
+	padding-bottom: 30px;
+  font-family: 'source_sans_problack';
+  letter-spacing: 7px;
+}
+
+.about_us>div{
+  display: block;
+  width: 100%;
+}
+
+.image_container {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  margin: 20px;
+  border: 10px double #eaeaea;
+  padding: 10px;
+  width: 500px;
+  height: 370px;
+}
+
+.image_container>img{
+  height: 95%;
+  margin: 3px;
+}
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.3);
+  display: none;
+}
+.image_container:hover .overlay{
+  display: block;
+}
+.overlay>p{
+  padding: 30px;
+  color: white;
+  text-align: center;
+  font-family: cursive;
+  font-size: 15px;
+}
+.info-author {
+  display: inline-block;
+  font-family: cursive;
+  font-size: 20px;
+  color: #716a72;
+}
+input,textarea{
+  margin-top: 5px;
+}
+#footer-usage {
+  padding-bottom: 20px;
+  font-family: cursive;
+  font-size: 13px;
+}
+.about_project{
+  padding-top: 20px;
+  font-family: cursive;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 15px;
+}
+
+.desc-text{
+  font-size: 15px;
+  font-style: italic;
+}
+
+.can_you_do{
+  padding-top: 40px;
+  height: 100px;
+  width: 300px;
+  border-radius: 100%;
+  background-color: #222222;
+  color: yellow;
+  float: left;
+  font-size: 17px;
+  font-weight: bold;
+  border: 1px solid black;
+  box-shadow: 5px 5px 0 0 black;
+}
+
+.can_you_do_list{
+  padding: 10px 0 0 0px;
+  font-size: 15px;
+}
+
+.how_to_use{
+  padding-top: 40px;
+  height: 100px;
+  width: 300px;
+  border-radius: 100%;
+  background-color: #222222;
+  color: yellow;
+  float: right;
+  font-size: 17px;
+  font-weight: bold;
+  border: 1px solid black;
+  box-shadow: 5px 5px 0 0 black;
+}
+
+.link_project{
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.link_project_note{
+  font-family: cursive;
+  font-size: 30px;
+  color: #b92b27;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#image_slide_container{
+  margin: auto;
+}
+
+.container_1{
+  overflow: hidden;
+  position: relative;
+}
+
+.container_1>*{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+@media screen and (max-width: 640px) {
+  .image_container {
+    width: 250px;
+    height: 185px;
+  }
+  .overlay>p{
+    font-size: 10px;
+  }
+  .info-author {
+    font-size: 15px;
+  }
+  .link {
+    width: 250px;
+    height: 85px;
+  }
+
+  .can_you_do{
+    width: 70%;
+    float: none;
+    margin-left: 15%;
+  }
+  .how_to_use{
+    width: 70%;
+    float: none;
+    margin-left: 15%;
+  }
+}

@@ -1,0 +1,27 @@
+body {
+  margin: 0px;
+  overflow: hidden;
+}
+
+.menu {
+  position: fixed;
+  width: 100%;
+  color: #ffffff;
+}
+
+ul {
+  padding: 10px 20px 10px 20px;
+}
+
+.menu>a {
+  color: #ffffff;
+  margin-left: 20px;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
