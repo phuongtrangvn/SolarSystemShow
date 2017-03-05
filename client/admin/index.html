@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Solar System Show</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="/libs/jquery.min.js"></script>
+    <script type="text/javascript" src="/libs/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/libs/bootstrap/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="./main.js"></script>
+
+  </head>
+  <body>
+    <h3>User Manangement</h3>
+    <nav>
+      <div class="">
+        <div class="navbar-header">
+        </div>
+        <ul>
+          <li> <a href="/admin/index.html"> User</a> </li>
+          <li> <a href = "/admin/solar"> Solar</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <!-- search information -->
+      <form class="row infor_container" id = "search_form">
+        <div class="col-md-6 col-sm-12">
+          <label>Name</label>
+          <input type="text" name = "name" id = "input_name"/>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label>Account</label>
+          <input type="text" name="username" id = "input_account"/>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label> Role</label>
+          <label><input class="radio_role" type="radio" name="role" value="admin"/>admin</label>
+          <label><input class="radio_role" type="radio" name="role" value="user"/>user</label>
+        </div>
+        <button class="btn btn-default" type="submit">Search</button>
+      </form>
+
+      <!-- Table result -->
+      <div class="row table_container">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td>Account</td>
+              <td>Name</td>
+              <td>Role</td>
+              <td>Action</td>
+            </tr>
+          </thead>
+          <tbody id = "table_body">
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Edit pop-up -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Edit User</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="row">
+                  <label class="col-md-3">Name</label>
+                  <input type="text" name="name" id = "edit_name" class="col-md-8">
+                  <label class="col-md-3">Username</label>
+                  <input type="text" name="username" readonly id = "edit_username" class="col-md-8">
+                  <label class="col-md-3">Age</label>
+                  <input type="number" name="age" id = "edit_age" class="col-md-8">
+                  <label class="col-md-3"> Role</label>
+                  <label><input class="edit_role" type="radio" name="role" value="admin"/>admin</label>
+                  <label><input class="edit_role" type="radio" name="role" value="user"/>user</label>
+                </div>
+                <button class="btn btn-default" type="submit">Edit</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
