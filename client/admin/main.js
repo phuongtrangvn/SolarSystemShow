@@ -1,5 +1,6 @@
 $(document).ready(function() {
-  var search = {};
+  // search.account = urlParams.get('account');
+  // search.role = urlParams.get('role');
   var urlParams = new URLSearchParams(window.location.search)
   $('#input_name').val(urlParams.get('name'));
   $('#input_account').val(urlParams.get('username'));
@@ -7,14 +8,56 @@ $(document).ready(function() {
     if ($(ele).val() == urlParams.get('role')) {
       $(ele).attr('checked', true);
     }
-  })
-  // search.account = urlParams.get('account');
-  // search.role = urlParams.get('role');
+  });
   callAjax(window.location.search);
+
+  $("#form_edit").submit(function(evt) {
+    evt.preventDefault(); //Dừng mặc đi
+    var infor = $(this).serialize();
+    console.log(infor);
+    infor = infor.split('&');
+    var infor_convert = {};
+    infor.forEach(function(ele, index) {
+      // ele.replace('=', ':');
+      ele = ele.split("=");
+      infor_convert[ele[0]] = unescape(ele[1]);
+    })
+    $.ajax({
+      url : "/api/user/edit/",
+      method: "put",
+      data : infor_convert,
+      dataType: "application/JSON"
+    }).always(function(res) {
+      console.log(res);
+      if (res.status) {
+        $("#myModal").modal('hide');
+        $('#table_body').empty();
+        callAjax(window.location.search);
+      }else {
+        alert(res.message);
+      }
+    })
+  })
 })
+  // $("#search_form").submit(function(evt) {
+  //   var search = {};
+    // var urlParams = new URLSearchParams(window.location.search)
+    // $('#input_name').val(urlParams.get('name'));
+    // $('#input_account').val(urlParams.get('username'));
+    // $('.radio_role').each(function (i, ele) {
+      // if ($(ele).val() == urlParams.get('role')) {
+      //   $(ele).attr('checked', true);
+    //   }
+    // })
+  //   evt.preventDefault();
+  //   callAjax(window.location.search);
+  // })
+
+// })
 
 function callAjax(querySearch) {
   // chen thon tin vao bang
+  console.log("àgag");
   $.ajax({
     url : "/api/user/find" + querySearch,
     method : "get"
@@ -42,7 +85,6 @@ function callAjax(querySearch) {
         $("#edit_age").val(ele.age)
         $('.edit_role').each(function (i, role) {
           if ($(role).val() == ele.role) {
-            console.log(ele.role);
             $(role).attr('checked', true);
           }
         })
@@ -64,6 +106,7 @@ function callAjax(querySearch) {
           }
         })
       })
+
       action.append(btnEdit);
       action.append(btnDel);
       tr.append(action)

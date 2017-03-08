@@ -26,15 +26,17 @@ module.exports = {
           data.age = req.body.age;
           data.role = req.body.role;
           data.name = req.body.name;
+          data.save(function(err, newData){
+            if (err){
+              res.json({status: false, message: 'Update failed!!!'});
+            }
+            else{
+              res.json({status: true, message: 'Update succeed!!!'});
+            }
+          });
+        } else {
+          res.status(400).json({message: 'not found user with username: ' + req.body.username});
         }
-        data.save(function(err, newData){
-          if (err){
-            res.json({status: false, message: 'Update failed!!!'});
-          }
-          else{
-            res.json({status: true, message: 'Update succeed!!!'});
-          }
-        });
       });
     }
     else {
