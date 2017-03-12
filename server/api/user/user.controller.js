@@ -1,5 +1,5 @@
 'use strict';
-
+var authService = require('../auth/auth.service.js')
 var User = require('./user.model');
 
 module.exports = {
@@ -121,5 +121,23 @@ module.exports = {
     } else {
       res.json([]);
     }
+  },
+
+  login : function(req, res) {
+    User.findOne({username : req.body.username}).exec(function(err, doc) {
+      if (err || !doc) {
+        res.json(err || {status: false, message: 'Not found account: ' + req.body.username });
+      } else {
+        doc.encryptPassword(req.body.password, function(err, encryptedPassword) {
+          if (doc.password == encryptedPassword) {
+            res.json({status: true, message: 'Login succeed!!!', user : doc, token: authService.signToken(doc._id, doc.role)});
+            //TODO: remember
+          }
+          else {
+            res.json({status: false, message: 'Login failed!!!!'})
+          }
+        })
+      }
+    })
   }
 }

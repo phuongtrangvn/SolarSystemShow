@@ -16,14 +16,16 @@ module.exports = function(app) {
 
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
-
-  var appPath = path.join(config.root, 'client');
-  var solar   = path.join(config.root, 'solar');
   var bowers  = path.join(config.root, 'bower_components');
 
-  app.use(express.static(appPath));
-  app.use('/SolarSystem', express.static(solar));
   if (env === 'development') {
     app.use('/bower_components', express.static(bowers));
   }
+
+  app.use(function(err, req, res, next) {
+    console.log("errr");
+    if (err.name === 'UnauthorizedError'){
+      res.status(401).send('invalid token ...')
+    }
+  })
 }

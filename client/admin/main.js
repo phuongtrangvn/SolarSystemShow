@@ -38,22 +38,11 @@ $(document).ready(function() {
       }
     })
   })
+  $("#btn_Logout").click(function(evt) {
+    $.removeCookie('token', { path: '/'});
+    window.location.pathname = '/login.html';
+  })
 })
-  // $("#search_form").submit(function(evt) {
-  //   var search = {};
-    // var urlParams = new URLSearchParams(window.location.search)
-    // $('#input_name').val(urlParams.get('name'));
-    // $('#input_account').val(urlParams.get('username'));
-    // $('.radio_role').each(function (i, ele) {
-      // if ($(ele).val() == urlParams.get('role')) {
-      //   $(ele).attr('checked', true);
-    //   }
-    // })
-  //   evt.preventDefault();
-  //   callAjax(window.location.search);
-  // })
-
-// })
 
 function callAjax(querySearch) {
   // chen thon tin vao bang
