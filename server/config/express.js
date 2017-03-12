@@ -22,10 +22,4 @@ module.exports = function(app) {
     app.use('/bower_components', express.static(bowers));
   }
 
-  app.use(function(err, req, res, next) {
-    console.log("errr");
-    if (err.name === 'UnauthorizedError'){
-      res.status(401).send('invalid token ...')
-    }
-  })
 }

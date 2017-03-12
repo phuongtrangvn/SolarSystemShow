@@ -40,6 +40,11 @@ module.exports = {
             next();
           })
           .catch(err => next(err));
+      }).use(function(err, req, res, next) {
+        console.log("errr");
+        if (err.name === 'UnauthorizedError'){
+          res.status(401).send('invalid token ...')
+        }
       });
   },
 
