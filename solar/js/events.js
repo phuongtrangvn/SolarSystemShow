@@ -174,6 +174,12 @@ define(['app', 'configs'], function(app, configs) {
     }
   }
   var i = 0;
+  var btnPlanets = $('.btn_planet_container');
+  $('body').on('click', '.btn_planet', e => {
+    if(e.target.id && app.planets[e.target.id]) {
+      $(document).trigger('changeview', [configs.view.PLANET, app.planets[e.target.id]]);
+    }
+  })
   // change view
   // BE3HW - step 05
   // object truyen vao day la 1 hanh tinh
@@ -183,6 +189,7 @@ define(['app', 'configs'], function(app, configs) {
         case configs.view.SYSTEM: {
           app.setFocus(object);
           app.menu.left1.html('');
+          $('.right').append(btnPlanets);
           app.menu.right1.html('');
           app.view = viewType;
           break;
@@ -192,6 +199,7 @@ define(['app', 'configs'], function(app, configs) {
           // an vao planet >> gui request ajax ve server theo url '/api/solar' + query
           // co response ajax tra ve >> dien thong tin tuong ung nhan duoc len
           app.planetView.onFocus(object);
+          $('body').find('.btn_planet_container').remove();
           app.setFocus(app.planetView);
           app.view = viewType;
           $.ajax({

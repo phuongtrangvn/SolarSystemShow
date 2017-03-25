@@ -57,7 +57,7 @@ function createFire(config, app, sun) {
       fireMaterial;
   fireGeometry = new THREE.CircleGeometry(2 * config.radiant, 60);
   fireMaterial = new THREE.MeshBasicMaterial({
-    color: "#FF0000",
+    color: "#FF7F00",
     map: THREE.ImageUtils.loadTexture("img/pe/smokeparticle.png"),
     blending: THREE.AdditiveBlending,
     transparent: true

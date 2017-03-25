@@ -20,10 +20,33 @@ define(['configs'], function(configs) {
 
   mesh.name = "PlanetView";
 
+  var cloudGeometry,
+    cloudMaterial,
+    cloudMesh;
+
+  cloudGeometry = new THREE.SphereGeometry(config.radiant * 1.01, 32, 32);
+  cloudMaterial = new THREE.MeshPhongMaterial({
+    map         : THREE.ImageUtils.loadTexture('img/earthcloudmaptrans.jpg'),
+    bumpMap     : THREE.ImageUtils.loadTexture('img/earthcloudmap.jpg'),
+    bumpScale   : 0.05,
+    side        : THREE.DoubleSide,
+    opacity     : 0.1,
+    transparent : true,
+    depthWrite  : false
+  });
+
+  cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial);
+  mesh.add(cloudMesh);
+
   mesh.onFocus = function(target) {
     mesh.material.map = target.material.map;
     mesh.material.bumpMap = target.material.bumpMap;
     mesh.material.bumpScale = target.material.bumpScale * 10;
+    if(target.name.toLowerCase() == 'earth') {
+      cloudMesh.opacity = 1;
+    } else {
+      cloudMesh.opacity = 0;
+    }
   }
 
   return mesh;

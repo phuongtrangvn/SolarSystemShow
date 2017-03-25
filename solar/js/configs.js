@@ -8,8 +8,8 @@ define([], function() {
   }
 
   var sun = {
-    radiant: 0.0696 * 0.5, // sun size was division by 10
-    lightPower: 1,
+    radiant: 0.0696342 * 0.5, // sun size was division by 10
+    lightPower: 0.6,
     lightColor: "#ffffff",
     spotLight: {
       color: "#ffffff",
@@ -29,7 +29,7 @@ define([], function() {
 
   var mercury = {
     distance: 0.057,
-    radiant: 0.0063710,
+    radiant: 0.002439,
     Trajectory : {
       aX: 0,
       aY: 0,
@@ -42,7 +42,7 @@ define([], function() {
 
   var venus = {
     distance: 0.108,
-    radiant: 0.0063710,
+    radiant: 0.006051,
     Trajectory : {
       aX: 0,
       aY: 0,
@@ -55,7 +55,7 @@ define([], function() {
 
   var earth = {
     distance: 0.149,
-    radiant: 0.0063710,
+    radiant: 0.006371,
     speed: 0.0000000001,
     Trajectory : {
       aX: 0,
@@ -69,7 +69,7 @@ define([], function() {
 
   var mars = {
     distance: 0.227,
-    radiant: 0.00339,
+    radiant: 0.003389,
     Trajectory : {
       aX: 0,
       aY: 0,
@@ -82,7 +82,7 @@ define([], function() {
 
   var jupiter = {
     distance: 0.778,
-    radiant: 0.0026312,
+    radiant: 0.069911,
     Trajectory : {
       aX: 0,
       aY: 0,

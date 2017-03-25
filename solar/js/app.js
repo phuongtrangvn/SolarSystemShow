@@ -111,7 +111,7 @@ define(['configs', 'entities/lights', 'entities/planetView'], function(configs, 
     // console.log(planetView.position, camera.position);
     // camera.lookAt(planetView.position);
   }
-
+  // planetView.lookAt(camera);
   scene.add(app.planetView = planetView);
   app.intersectsChecking.push(app.planetView);
   updateQueue.push(planetView.update);
