@@ -41,9 +41,8 @@ module.exports = {
           })
           .catch(err => next(err));
       }).use(function(err, req, res, next) {
-        console.log("errr");
         if (err.name === 'UnauthorizedError'){
-          res.status(401).send('invalid token ...')
+          res.redirect('/login.html');
         }
       });
   },
@@ -63,7 +62,7 @@ module.exports = {
             config.userRoles.indexOf(roleRequired)) {
           next();
         } else {
-          res.status(403).send('Forbidden');
+          res.status(403).send('Cái này là của admin nhé! :3');
         }
       });
   },
