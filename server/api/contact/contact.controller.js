@@ -1,21 +1,22 @@
 'use strict';
+var authService = require('../auth/auth.service.js')
+var Contact = require('./contact.model');
 
 module.exports = {
-  createUser: function(req, res) {
+  createContact: function(req, res) {
     if (req.body) {
-      User.findOne({username: req.body.username}).exec(function(err, data){
+      Contact.findOne({_id: req.body._id}).exec(function(err, data){
         if (data) {
           res.json({status: false, message: 'User are already exist!'})
         } else {
-          var newUser = {
-            username: req.body.username,
-            password: req.body.password,
-            role: req.body.role,
-            age: req.body.age,
-            name: req.body.name
+          var newContact = {
+            name: req.body.name,
+            email: req.body.email,
+            feedback: req.body.feedback,
+            time: Date.now()
           }
-          console.log(newUser);
-          User.create(newUser, function(err, data){
+          console.log(newContact);
+          Contact.create(newContact, function(err, data){
             res.json({status: true, message: 'Success'});
           });
         }
@@ -23,9 +24,49 @@ module.exports = {
     }
   },
 
-  getUser : function(req, res){
-    User.find().exec(function(err, data){
+  getContact : function(req, res){
+    Contact.find().exec(function(err, data){
       res.json(data);
     });
+  },
+
+  deleteContact: function(req, res){
+    Contact.findOne({_id: req.params._id})
+      .exec(function(err, data){
+        if (data){
+          data.remove(function(err){
+            if (err){
+              res.json({status: false, message:'delete failed!!!'});
+            }else{
+              res.json({status: true, message:'delete succeed!!!'});
+            }
+          })
+        }else{
+          res.json({status: false, message:'delete failed!!!'});
+        }
+      })
+  },
+
+  edit: function(req,res){
+    if(req.body){
+      Contact.findOne({_id: req.body._id}).exec(function(err, data){
+        if (data){
+          data.resolved = req.body.resolved;
+          data.save(function(err, newData){
+            if (err){
+              res.json({status: false, message: 'Update failed!!!'});
+            }
+            else{
+              res.json({status: true, message: 'Update succeed!!!'});
+            }
+          });
+        } else {
+          res.status(400).json({message: 'not found contact: '});
+        }
+      });
+    }
+    else {
+      res.json({status: false, message: 'Update fail!!!'})
+    }
   }
 }
