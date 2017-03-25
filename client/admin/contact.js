@@ -12,44 +12,44 @@ $(document).ready(function() {
   callAjax(window.location.search);
 
 // submit edit user
-  $("#form_edit").submit(function(evt) {
-    evt.preventDefault(); //Dừng mặc đi
-    var infor = $(this).serialize();
-    console.log(infor);
-    infor = infor.split('&');
-    var infor_convert = {};
-    infor.forEach(function(ele, index) {
-      // ele.replace('=', ':');
-      ele = ele.split("=");
-      infor_convert[ele[0]] = unescape(ele[1]);
-    })
-    $.ajax({
-      url : "/api/user/edit/",
-      method: "put",
-      data : infor_convert,
-      dataType: "application/JSON"
-    }).always(function(res) {
-      console.log(res);
-      if (res.status) {
-        $("#myModal").modal('hide');
-        $('#table_body').empty();
-        callAjax(window.location.search);
-      }else {
-        alert(res.message);
-      }
-    })
-  })
+  // $("#form_edit").submit(function(evt) {
+  //   evt.preventDefault(); //Dừng mặc đi
+  //   var infor = $(this).serialize();
+  //   console.log(infor);
+  //   infor = infor.split('&');
+  //   var infor_convert = {};
+  //   infor.forEach(function(ele, index) {
+  //     // ele.replace('=', ':');
+  //     ele = ele.split("=");
+  //     infor_convert[ele[0]] = unescape(ele[1]);
+  //   })
+  //   $.ajax({
+  //     url : "/api/user/edit/",
+  //     method: "put",
+  //     data : infor_convert,
+  //     dataType: "application/JSON"
+  //   }).always(function(res) {
+  //     console.log(res);
+  //     if (res.status) {
+  //       $("#myModal").modal('hide');
+  //       $('#table_body').empty();
+  //       callAjax(window.location.search);
+  //     }else {
+  //       alert(res.message);
+  //     }
+  //   })
+  // })
   $("#btn_Logout").click(function(evt) {
     $.removeCookie('token', { path: '/'});
     window.location.pathname = '/login.html';
   })
 })
 
-function callAjax(querySearch) {
+function callAjax() {
   // chen thon tin vao bang
   console.log("àgag");
   $.ajax({
-    url : "/api/user/find" + querySearch,
+    url : "/api/contact/getContact",
     method : "get"
   }).always(function(res) {
     res.forEach(function(ele) {
@@ -84,7 +84,7 @@ function callAjax(querySearch) {
 
       btnDel.click(function(evt) {
         $.ajax({
-          url : "/api/user/delete/" + ele.username,
+          url : "/api/contact/delete/" + ele._id,
           method : 'delete'
         }).always(function(res) {
           if (res.status) {

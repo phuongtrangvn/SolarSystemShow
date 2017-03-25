@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Solar System Show</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="/libs/jquery.min.js"></script>
+    <script type="text/javascript" src="/libs/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/libs/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/libs/bootstrap/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="./contact.js"></script>
+
+  </head>
+  <body>
+    <h3>Contact Manangement</h3>
+    <nav>
+      <div class="">
+        <div class="navbar-header">
+        </div>
+        <ul>
+          <li> <a href="/admin/index.html"> User</a> </li>
+          <li> <a href="/admin/contact.html">Contact</a> </li>
+          <li> <a href = "/SolarSystem"> Solar</a></li>
+        </ul>
+      </div>
+      <div class="user_infor">
+        <button type="button" id="btn_Logout">Log out</button>
+      </div>
+    </nav>
+    <div class="container">
+      <!-- search information -->
+      <form class="row infor_container" id = "search_form">
+        <div class="col-md-6 col-sm-12">
+          <label>Name</label>
+          <input type="text" name = "name" id = "input_name"/>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label>Account</label>
+          <input type="text" name="username" id = "input_account"/>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label> Role</label>
+          <label><input class="radio_role" type="radio" name="role" value="admin"/>admin</label>
+          <label><input class="radio_role" type="radio" name="role" value="user"/>user</label>
+        </div>
+        <button class="btn btn-default" type="submit">Search</button>
+      </form>
+
+      <!-- Table result -->
+      <div class="row table_container">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>Email</td>
+              <td>Feedback</td>
+              <td>Time</td>
+              <td>Resolved</td>
+              <td>Action</td>
+            </tr>
+          </thead>
+          <tbody id = "table_body">
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </body>
+</html>

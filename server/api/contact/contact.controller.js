@@ -1,5 +1,4 @@
 'use strict';
-var authService = require('../auth/auth.service.js')
 var Contact = require('./contact.model');
 
 module.exports = {
@@ -68,5 +67,17 @@ module.exports = {
     else {
       res.json({status: false, message: 'Update fail!!!'})
     }
-  }
+  },
+
+  findByEmail : function(req, res){
+    if (req.params.email) {
+      console.log('debug', 'START- findByAccount %s', req.params.email);
+      Contact.find({email: req.params.email}).exec(function(err, data){
+        res.json(data);
+        console.log('debug', 'END- findByAccount');
+      });
+    } else {
+      res.json([]);
+    }
+  },
 }
