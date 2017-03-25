@@ -35,7 +35,7 @@ define([], function() {
       aY: 0,
       xRadius: 0.057,
       yRadius: 0.05,
-      points: 50,
+      points: 200,
       startPosition: 0
     }
   }
@@ -48,7 +48,7 @@ define([], function() {
       aY: 0,
       xRadius: 0.108,
       yRadius: 0.10,
-      points: 50,
+      points: 300,
       startPosition: 25
     }
   }
@@ -56,12 +56,13 @@ define([], function() {
   var earth = {
     distance: 0.149,
     radiant: 0.0063710,
+    speed: 0.0000000001,
     Trajectory : {
       aX: 0,
       aY: 0,
       xRadius: 0.149,
       yRadius: 0.14,
-      points: 50,
+      points: 400,
       startPosition: 0
     }
   }
@@ -74,7 +75,7 @@ define([], function() {
       aY: 0,
       xRadius: 0.227,
       yRadius: 0.22,
-      points: 150,
+      points: 450,
       startPosition: 25
     }
   }
@@ -87,7 +88,7 @@ define([], function() {
       aY: 0,
       xRadius: 0.778,
       yRadius: 0.77,
-      points: 250,
+      points: 700,
       startPosition: 0
     }
   }
@@ -100,7 +101,7 @@ define([], function() {
       aY: 0,
       xRadius: 1.426,
       yRadius: 1.42,
-      points: 350,
+      points: 800,
       startPosition: 25
     }
   }
@@ -113,7 +114,7 @@ define([], function() {
       aY: 0,
       xRadius: 2.870,
       yRadius: 2.8,
-      points: 450,
+      points: 1100,
       startPosition: 0
     }
   }
@@ -126,7 +127,7 @@ define([], function() {
       aY: 0,
       xRadius: 4.498,
       yRadius: 4.49,
-      points: 550,
+      points: 1300,
       startPosition: 25
     }
   }
@@ -139,7 +140,7 @@ define([], function() {
       aY: 0,
       xRadius: 5.906,
       yRadius: 5.9,
-      points: 550,
+      points: 1300,
       startPosition: 0
     }
   }

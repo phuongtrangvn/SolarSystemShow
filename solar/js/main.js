@@ -18,7 +18,6 @@ require(['app', 'events',
     'entities/uranus',
     'entities/neptune']
     , function(app, events, sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune) {
-
   app.scene.add(sun);
   app.updateQueue.push(sun.update);
   app.intersectsChecking.push(sun);

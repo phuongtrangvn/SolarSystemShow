@@ -30,7 +30,7 @@ define(['configs', 'entities/lights', 'entities/planetView'], function(configs, 
   })
 
   camera	= new THREE.PerspectiveCamera(45, width / height, 0.01, 1000 );
-  camera.position.z = currentCameraRange = (cameraMaxRange + cameraMinRange) / 2;
+  camera.position.z = currentCameraRange = (cameraMaxRange + cameraMinRange) / 5;
   camera.position.y = 1;
 
   mouse = new THREE.Vector2();
@@ -69,7 +69,7 @@ define(['configs', 'entities/lights', 'entities/planetView'], function(configs, 
       height            : height,
       cameraMaxRange    : cameraMaxRange,
       cameraMinRange    : cameraMinRange,
-      currentCameraRange : currentCameraRange,
+      currentCameraRange: currentCameraRange,
       update            : null,
       updateCameraRange : null,
       setFocus          : null,
@@ -80,11 +80,13 @@ define(['configs', 'entities/lights', 'entities/planetView'], function(configs, 
       intersectsChecking: []
   };
   // call this once to start the update queue
-
+  var lastTimeCallUpdate = 0;
   app.update = function(time) {
+    let sincLastTimeUpdate = time - lastTimeCallUpdate;
+    lastTimeCallUpdate = time;
 		requestAnimationFrame( app.update );
     updateQueue.forEach(function(updateFunc) {
-      updateFunc(time);
+      updateFunc(sincLastTimeUpdate);
     });
     app.camera.lookAt(app._focusObject.position);
     app.lastUpdate = Date.now();

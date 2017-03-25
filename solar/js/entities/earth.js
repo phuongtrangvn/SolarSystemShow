@@ -25,6 +25,7 @@ define(['app', 'configs', 'entities/TrajectoryMesh'], function(app, configs, Tra
   material.specular = new THREE.Color('grey');
 
   mesh = new THREE.Mesh(geometry, material);
+  mesh.speed = config.speed;
 
   //childrens
     //-cloud
@@ -49,10 +50,10 @@ define(['app', 'configs', 'entities/TrajectoryMesh'], function(app, configs, Tra
   app.scene.add(trajectory);
   //setup
 
-  mesh.update = function() {
+  mesh.update = function(time) {
     mesh.rotation.y += 0.01;
     trajectory.nextPosition();
-    trajectory.setPlanetPosition();
+    trajectory.setPlanetPosition(time);
   }
 
   mesh.name = "Earth";

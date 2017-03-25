@@ -14,26 +14,32 @@ define([], function() {
       var material = new THREE.LineBasicMaterial( { color : 0xffffff } );
 
       super( geometry, material );
+      this.templateVector1 = new THREE.Vector3();
+      this.templateVector2 = new THREE.Vector3();
       this.currentVerticesIndex = configs.startPosition || 0;
-      if(planet) {
-        this.planet = planet;
-        this.setPlanetPosition();
-      }
-      this.rotation.x += Math.PI / 2;
-      // this.next();
+      this.planet = planet;
+      this.halfPI = Math.PI / 2;
+      this.rotation.x += this.halfPI;
+      this.nextPosition();
     }
 
-    setPlanetPosition() {
+    setPlanetPosition(time) {
       if(this.planet) {
-        let currentVt = this.geometry.vertices[this.currentVerticesIndex]
-                          .clone()
-                          .applyAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI/2);
-        this.planet.position.set(currentVt.x, currentVt.y, currentVt.z);
+        let currentVt = this.templateVector1.copy(this.geometry.vertices[this.currentVerticesIndex]).applyAxisAngle(new THREE.Vector3(1, 0, 0), -this.halfPI);
+        let nextVt = this.templateVector2.copy(this.geometry.vertices[this.getNextVerticesIndex()]).applyAxisAngle(new THREE.Vector3(1, 0, 0), -this.halfPI);
+        let currentPosition = this.planet.position;
+        // this.templateVector1.set(this.planet.position.x, this.planet.position.y, this.planet.position.z);
       }
     }
 
     nextPosition() {
-      return this.geometry.vertices[this.currentVerticesIndex < this.geometry.vertices.length - 2 ? ++this.currentVerticesIndex : (this.currentVerticesIndex = 0)];
+      var nextVt = this.geometry.vertices[this.currentVerticesIndex = this.getNextVerticesIndex()];
+      this.planet.position.copy(nextVt).applyAxisAngle(new THREE.Vector3(1, 0, 0), -this.halfPI);
+      return nextVt;
+    }
+
+    getNextVerticesIndex() {
+      return this.currentVerticesIndex < this.geometry.vertices.length - 2 ? this.currentVerticesIndex + 1 : 0;
     }
   }
 
