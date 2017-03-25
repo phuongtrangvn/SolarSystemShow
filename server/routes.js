@@ -13,6 +13,7 @@ module.exports = function(app) {
   app.use('/api/auth', require('./api/auth'));
   app.use('/api/user', require('./api/user'));
   app.use('/api/test', require('./api/test'));
+  app.use('/api/contact', require('./api/contact'));
   app.use('/admin', authService.isAuthenticated(), authService.hasRole('admin'), express.static(path.join(appPath, 'admin')));
   app.use(express.static(appPath));
   app.use('/SolarSystem', express.static(solar));
