@@ -15,7 +15,6 @@ $(document).ready(function() {
   $("#form_edit").submit(function(evt) {
     evt.preventDefault(); //Dừng mặc đi
     var infor = $(this).serialize();
-    console.log(infor);
     infor = infor.split('&');
     var infor_convert = {};
     infor.forEach(function(ele, index) {
@@ -75,8 +74,12 @@ function callAjax(querySearch) {
         $("#edit_age").val(ele.age)
         $('.edit_role').each(function (i, role) {
           if ($(role).val() == ele.role) {
-            $(role).attr('checked', true);
+            $(role).prop('checked', true);
           }
+          else {
+            $(role).prop('checked', false);
+          }
+          console.log(role);
         })
       })
       var btnDel = $("<button class = 'btn btn-danger'>");

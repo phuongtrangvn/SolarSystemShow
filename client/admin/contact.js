@@ -1,44 +1,5 @@
 $(document).ready(function() {
-  // search.account = urlParams.get('account');
-  // search.role = urlParams.get('role');
-  var urlParams = new URLSearchParams(window.location.search)
-  $('#input_name').val(urlParams.get('name'));
-  $('#input_account').val(urlParams.get('username'));
-  $('.radio_role').each(function (i, ele) {
-    if ($(ele).val() == urlParams.get('role')) {
-      $(ele).attr('checked', true);
-    }
-  });
   callAjax(window.location.search);
-
-// submit edit user
-  // $("#form_edit").submit(function(evt) {
-  //   evt.preventDefault(); //Dừng mặc đi
-  //   var infor = $(this).serialize();
-  //   console.log(infor);
-  //   infor = infor.split('&');
-  //   var infor_convert = {};
-  //   infor.forEach(function(ele, index) {
-  //     // ele.replace('=', ':');
-  //     ele = ele.split("=");
-  //     infor_convert[ele[0]] = unescape(ele[1]);
-  //   })
-  //   $.ajax({
-  //     url : "/api/user/edit/",
-  //     method: "put",
-  //     data : infor_convert,
-  //     dataType: "application/JSON"
-  //   }).always(function(res) {
-  //     console.log(res);
-  //     if (res.status) {
-  //       $("#myModal").modal('hide');
-  //       $('#table_body').empty();
-  //       callAjax(window.location.search);
-  //     }else {
-  //       alert(res.message);
-  //     }
-  //   })
-  // })
   $("#btn_Logout").click(function(evt) {
     $.removeCookie('token', { path: '/'});
     window.location.pathname = '/login.html';
@@ -47,36 +8,44 @@ $(document).ready(function() {
 
 function callAjax() {
   // chen thon tin vao bang
-  console.log("àgag");
   $.ajax({
     url : "/api/contact/getContact",
     method : "get"
   }).always(function(res) {
     res.forEach(function(ele) {
       var tr = $('<tr id=' + ele._id + '>');
-      var account = $('<td>');
-      account.html(ele.username);
-      tr.append(account);
-
       var name = $('<td>');
       name.html(ele.name);
       tr.append(name);
 
-      var role = $('<td>');
-      role.html(ele.role);
-      tr.append(role);
+      var email = $('<td>');
+      email.html(ele.email);
+      tr.append(email);
+
+      var feedback = $('<td>');
+      feedback.html(ele.feedback);
+      tr.append(feedback);
+
+      var time = $('<td>');
+      time.html(ele.time);
+      tr.append(time);
+
+      var resolved = $('<td>');
+      resolved.html(ele.resolved ? "Done": "Not yet");
+      tr.append(resolved);
 
       var action = $('<td>');
       var btnEdit = $("<button class = 'btn btn-primary' data-toggle='modal' data-target='#myModal'> ");
       btnEdit.html('Edit');
       btnEdit.click(function(evt) {
-        $("#edit_name").val(ele.name);
-        $("#edit_username").val(ele.username);
-        $("#edit_age").val(ele.age)
-        $('.edit_role').each(function (i, role) {
-          if ($(role).val() == ele.role) {
-            $(role).attr('checked', true);
-          }
+        $.ajax({
+          url : "/api/contact/edit",
+          method : "put",
+          data : {_id: ele._id, resolved: !ele.resolved},
+          dataType: "application/JSON"
+        }).always(function(res) {
+          $('#table_body').empty();
+          callAjax();
         })
       })
       var btnDel = $("<button class = 'btn btn-danger'>");

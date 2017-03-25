@@ -18,6 +18,7 @@
     <script type="text/javascript" src="js/preview.js"></script>
 
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/user.js"></script>
   </head>
   <body>
     <!--background-music -->
@@ -150,12 +151,11 @@
           <h1>Contact</h1>
         </div>
         <div id="footer-contact">
-          <form name="footer-contact-form" action id="footer-contact-form">
-            <input type="hidden" name="fsubmitpage" id="fsubmitpage" value="/">
-            <input type="text" name="fname" id="fname" placeholder="Type your name here" style="width: 350px"><br>
-            <input type="text" name="femail" id="femail" placeholder="Type your email here" style="width: 350px"><br>
-            <textarea name="fmessage" id="fmessage" rows="5" cols="40" placeholder="Type your message here" style="width: 350px"></textarea><br>
-            <a href="#"><img class="review_img" src="img/Cature.png" alt="SEND" width="50" height="50"></a>
+          <form name="footer-contact-form" id="form_contact">
+            <input type="text" name="name" id="fname" placeholder="Type your name here" style="width: 350px" required><br>
+            <input type="text" name="email" id="femail" placeholder="Type your email here" style="width: 350px" required><br>
+            <textarea name="feedback" id="fmessage" rows="5" cols="40" placeholder="Type your message here" style="width: 350px" required></textarea><br>
+            <button type="submit" name="button"><img class="review_img" src="img/Cature.png" alt="SEND" width="50" height="50"></button>
           </form>
         </div>
 

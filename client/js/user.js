@@ -1,25 +1,19 @@
 $(document).ready(function() {
-  console.log($.removeCookie);
   $("#form_signup").submit(function(evt) {
     evt.preventDefault(); //Dừng mặc đi
     var infor = $(this).serialize();
     infor = infor.split('&');
     var infor_convert = {};
     infor.forEach(function(ele, index) {
-      // ele.replace('=', ':');
-      console.log(ele);
       ele = ele.split("=");
-      console.log(ele);
       infor_convert[ele[0]] = unescape(ele[1]);
     })
-    console.log(infor_convert);
     $.ajax({
       url : "api/user/create",
       method : "post",
       data : infor_convert,
       dataType: "application/JSON"
     }).always(function(res) {
-      console.log(res);
       if ((res = JSON.parse(res.responseText)).status){
         alert("success");
         window.location = "/";
@@ -28,15 +22,12 @@ $(document).ready(function() {
         alert('Fail, ' + res.message);
       }
     })
-    console.log(username, name);
   });
 
   $('#form_login').submit(function(evt) {
     evt.preventDefault();
     var infor = $(this).serialize();
-    console.log(infor);
     infor = infor.split("&");
-    console.log(infor);
     var infor_convert = {};
     infor.forEach(function(ele, index) {
       ele = ele.split('=');
@@ -60,5 +51,27 @@ $(document).ready(function() {
         alert(res.message);
       }
     })
-  })
+  });
+
+  $("#form_contact").submit(function(evt) {
+    evt.preventDefault(); //Dừng mặc đi
+    var infor = $(this).serialize();
+    infor = infor.split('&');
+    var infor_convert = {};
+    infor.forEach(function(ele, index) {
+      ele = ele.split("=");
+      infor_convert[ele[0]] = unescape(ele[1]);
+    })
+    fetch("api/contact/createContact", {
+      method: "post",
+      headers: new Headers({"Content-Type": "application/json"}),
+      body: JSON.stringify(infor_convert)
+    }).then(function(res) {
+      if(res.status){
+        alert("Submit feedback success!")
+      } else {
+        alert("Submit feedback failed!")
+      }
+    })
+  });
 })
