@@ -111,7 +111,7 @@ gulp.task('serve:dist', ['default'], () => {
 	});
 });
 
-gulp.task('nodemon', function (cb) {
+gulp.task('nodemon',['default'], function (cb) {
 	var started = false;
 
 	return $.nodemon({

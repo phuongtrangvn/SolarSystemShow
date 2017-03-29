@@ -4,8 +4,8 @@
     "node": ">=4"
   },
   "scripts" :{
-    "start" : "nodemon server/app.js",
-    "postinstall": "bower install && gulp"
+    "start" : "gulp nodemon",
+    "postinstall": "bower install"
   },
   "devDependencies": {
     "browser-sync": "^2.2.1",
