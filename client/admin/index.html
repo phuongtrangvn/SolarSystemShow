@@ -9,54 +9,129 @@
     <script type="text/javascript" src="/libs/jquery.cookie.js"></script>
     <script type="text/javascript" src="/libs/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <script type="text/javascript" src="./main.js"></script>
+    <style>
+      body{
+        background-image: url(/img/background.jpg);
+        background-repeat: repeat;
+        text-align: center;
+        color: white;
+        text-shadow: 0 0 150px #FFF, 0 0 60px #FFF, 0 0 10px #FFF;
+        font-size: 17px;
+      }
+      h3 {
+        font-size:30px;
+        font-family: fantasy;
+      }
+      .user_infor {
+        float:right;
+      }
+      button {
+        width: 255px;
+        height:40px;
+        background-color:rgba(0,0,0,0);
+        border: none;
+        font-size:17px;
+        color: white;
+        text-shadow: 0 0 150px #FFF, 0 0 60px #FFF, 0 0 10px #FFF;
+      }
+      input {
+        margin: 20px;
+      }
+      input[type=radio]:checked{
+        outline: none;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+        text-shadow: 0 0 150px #FFF, 0 0 60px #FFF, 0 0 10px #FFF;
+      }
+      a:hover{
+        text-decoration: none;
+        color: white;
+      }
+      ul{
+        list-style: none;
+        display: inline-block;
+      }
+      li {
+        color: #f1f1f1;
+        display: inline-block;
+        width: 255px;
+        height:40px;
+        line-height: 40px;
+        margin-left: -5px;
+      }
+      hr{
+        margin: 30px;
+        height: 6px;
+        background: url(/img/hr.png) repeat-x 0 0;
+        border: 0;
+      }
+      hr.style14 {
+      	text-align: center;
+        background: none;
+      }
+      hr.style14:after {
+      	content: '_____꧁༺н2т++༻꧂_____';
+      	display: inline-block;
+      	position: relative;
+      	top: -15px;
+      	padding: 0 10px;
+      	color: white;
+      	font-size: 18px;
+        background: none;
+      }
+      label {
+        margin: 10px;
+      }
+      .op{
+        color: black;
+      }
 
+    </style>
   </head>
   <body>
-    <h3>User Manangement</h3>
+    <h3>User Manangement</h3><hr>
     <nav>
-      <div class="">
         <div class="navbar-header">
         </div>
         <ul>
           <li> <a href="/admin/index.html"> User</a> </li>
-          <li> <a href="/admin/contact.html">Contact</a> </li>
-          <li> <a href = "/SolarSystem"> Solar</a></li>
+          <li> <a href="/admin/contact.html">Feedback</a> </li>
+          <li> <a href = "/SolarSystem"> Solar System Show</a></li>
+          <li><button type="button" id="btn_Logout">Log out</button></li>
         </ul>
-      </div>
-      <div class="user_infor">
-        <button type="button" id="btn_Logout">Log out</button>
-      </div>
+        <hr>
     </nav>
     <div class="container">
       <!-- search information -->
       <form class="row infor_container" id = "search_form">
         <div class="col-md-6 col-sm-12">
-          <label>Name</label>
-          <input type="text" name = "name" id = "input_name"/>
+          <input type="text" name = "name" id = "input_name" placeholder="  ᴇɴтᴇʀ ᴀ ɴᴀмᴇ ..."/>
         </div>
         <div class="col-md-6 col-sm-12">
-          <label>Account</label>
-          <input type="text" name="username" id = "input_account"/>
+          <input type="text" name="username" id = "input_account" placeholder="  ᴇɴтᴇʀ ᴀ usᴇʀɴᴀмᴇ ..."/>
         </div>
         <div class="col-md-6 col-sm-12">
-          <label> Role</label>
-          <label><input class="radio_role" type="radio" name="role" value="admin"/>admin</label>
-          <label><input class="radio_role" type="radio" name="role" value="user"/>user</label>
+          <label><input class="radio_role" type="radio" name="role" value="admin"/>๖ ۣۜＡＤＭＩＮ ๖ۣۜ</label>
+          <label><input class="radio_role" type="radio" name="role" value="user"/>๖ۣۜ ＵＳＥＲ ๖ۣۜ</label>
         </div>
-        <button class="btn btn-default" type="submit">Search</button>
+        <button type="submit">✿ＳＥＡＲＣＨ✿</button>
       </form>
+      <hr class="style14">
 
       <!-- Table result -->
       <div class="row table_container">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <td>Account</td>
-              <td>Name</td>
-              <td>Role</td>
-              <td>Action</td>
+              <td>ACCOUNT</td>
+              <td>NAME</td>
+              <td>ROLE</td>
+              <td>OPTION</td>
             </tr>
           </thead>
           <tbody id = "table_body">
@@ -76,15 +151,15 @@
             <div class="modal-body">
               <form id = "form_edit">
                 <div class="row">
-                  <label class="col-md-3">Name</label>
-                  <input type="text" name="name" id = "edit_name" class="col-md-8">
-                  <label class="col-md-3">Username</label>
-                  <input type="text" name="username" readonly id = "edit_username" class="col-md-8">
-                  <label class="col-md-3">Age</label>
-                  <input type="number" name="age" id = "edit_age" class="col-md-8">
-                  <label class="col-md-3"> Role</label>
-                  <label><input class="edit_role" type="radio" name="role" value="admin"/>admin</label>
-                  <label><input class="edit_role" type="radio" name="role" value="user"/>user</label>
+                  <label class="col-md-2 op">Name</label>
+                  <input type="text" name="name" id = "edit_name" class="col-md-8 op">
+                  <label class="col-md-2 op">Username</label>
+                  <input type="text" name="username" readonly id = "edit_username" class="col-md-8 op">
+                  <label class="col-md-2 op">Age</label>
+                  <input type="number" name="age" id = "edit_age" class="col-md-8 op">
+                  <label class="col-md-2 op"> Role</label>
+                  <label class="op"><input class="edit_role" type="radio" name="role" value="admin"/>admin</label>
+                  <label class="op"><input class="edit_role" type="radio" name="role" value="user"/>user</label>
                 </div>
                 <button class="btn btn-default" type="submit">Edit</button>
               </form>
@@ -97,5 +172,6 @@
       </div>
 
     </div>
+    <hr>
   </body>
 </html>
