@@ -15,6 +15,9 @@ body{
 .site-header form input {
   color: black;
 }
+.site-header form textarea {
+  color: black;
+}
 .logo{display: inline-block;}
 .logo h1{
   font-size: 45px;
