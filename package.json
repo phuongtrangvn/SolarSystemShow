@@ -4,10 +4,25 @@
     "node": ">=4"
   },
   "scripts" :{
-    "start" : "gulp serve",
+    "start" : "gulp nodemon",
     "postinstall": "bower install"
   },
   "devDependencies": {
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true,
+      "browser": true
+    },
+    "rules": {
+      "quotes": [
+        2,
+        "single"
+      ]
+    }
+  },
+  "dependencies": {
     "browser-sync": "^2.2.1",
     "del": "^2.2.0",
     "gulp": "^3.9.0",
@@ -38,22 +53,7 @@
     "mongoose-find-one-or-create": "^0.2.0",
     "passport": "~0.3.0",
     "passport-facebook": "^2.1.1",
-    "passport-local": "^1.0.0"
-  },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "node": true,
-      "browser": true
-    },
-    "rules": {
-      "quotes": [
-        2,
-        "single"
-      ]
-    }
-  },
-  "dependencies": {
+    "passport-local": "^1.0.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "bower": "^1.8.0",
