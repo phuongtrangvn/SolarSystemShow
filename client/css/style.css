@@ -12,6 +12,9 @@ body{
   padding-top: 65px;
   border-radius: 10px 10px 10px 10px;
 }
+.site-header form input {
+  color: black;
+}
 .logo{display: inline-block;}
 .logo h1{
   font-size: 45px;
