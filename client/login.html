@@ -7,16 +7,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <script type="text/javascript" src="libs/jquery.min.js"></script>
     <script type="text/javascript" src="libs/jquery.cookie.js"></script>
+    <script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <script type="text/javascript" src="js/user.js"></script>
   </head>
   <body>
-    <form id="form_login">
-      <label>Tên</label>
-      <input type="text" placeholder="Enter your username ..." name = "username" required>
-      <label>Password</label>
-      <input type="password" placeholder="Enter your password ..." name = "password" required>
-      <button type="submit">Login</button>
-    </form>
+    <div class="container log">
+      <form id="form_login">
+          <input type="text" placeholder="  Enter your username ..." name = "username" required>
+          <input type="password" placeholder="  Enter your password ..." name = "password" required>
+          <button type="submit">Login</button><br>
+          <a href="/signup.html" style="font-size:17px; text-decoration:none; color:#103667; font-weight:bold">Register</a>
+      </form>
+    </div>
   </body>
 </html>

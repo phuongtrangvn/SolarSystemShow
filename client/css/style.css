@@ -5,22 +5,19 @@ body{
 .container {
   padding-top: 50px;
   padding-bottom: 50px;
+  background-color:rgba(0,0,0,0);
 }
 .site-header{
   text-align: center;
   padding-top: 65px;
-  background: #fafafa;
   border-radius: 10px 10px 10px 10px;
 }
 .logo{display: inline-block;}
 .logo h1{
   font-size: 45px;
   line-height: 52px;
-  color: #716a72;
   text-transform: uppercase;
-  border-bottom: 3px double #eaeaea;
 	padding-bottom: 30px;
-  font-family: 'source_sans_problack';
   letter-spacing: 7px;
 }
 .menu{
@@ -45,13 +42,16 @@ body{
 }
 
 .menu ul a{
+  color: white;
   text-decoration:none;
   width:140px;
   float:left;
-  color:#716a72;
   font-weight:bold;
   text-align:center;
   line-height:35px;
+}
+.menu ul a:hover {
+  background-color:rgba(0,0,0,0);
 }
 
 .title-text{
@@ -61,7 +61,6 @@ body{
 .title-text h1{
   font-size: 30px;
   line-height: 52px;
-  color: #716a72;
   text-transform: uppercase;
   border-bottom: 3px double #eaeaea;
 	padding-bottom: 30px;
@@ -213,4 +212,32 @@ input,textarea{
     float: none;
     margin-left: 15%;
   }
-}
+  }
+  .log {
+    background-color: rgba(245, 255, 250,	 0.7);
+    margin-left: 500px;
+    margin-right: 500px;
+    margin-top: 100px;
+    text-align:center;
+  }
+  input {
+    width: 250px;
+    height:30px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+  select {
+    width: 250px;
+    height:30px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+  button {
+    width: 255px;
+    height:40px;
+    background-color:#103667;
+    border: none;
+    font-size:17px;
+    color: white;
+    margin-bottom: 20px;
+  }
